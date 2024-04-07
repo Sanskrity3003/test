@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding-top: 70px;
+        }
+        .navbar-custom {
+            background-color: #333;
+            border-color: #333;
+            border-radius: 0;
+        }
+        .navbar-custom .navbar-brand {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar-custom .navbar-nav > li > a {
+            color: #ffffff;
+            font-size: 18px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .card-img-top {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 20px;
+            text-align: left;
+        }
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .card-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">My Book Recommender</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/recommend">Recommend</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center" style="margin-bottom: 50px;">Top 50 Books</h1>
+        <div class="row">
+            {% for i in range(book_name|length) %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{ image[i] }}" alt="Book Cover">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ book_name[i] }}</h4>
+                        <p class="card-text"><strong>Author:</strong> {{ author[i] }}</p>
+                        <p class="card-text"><strong>Votes:</strong> {{ votes[i] }}</p>
+                        <p class="card-text"><strong>Rating:</strong> {{ rating[i] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
